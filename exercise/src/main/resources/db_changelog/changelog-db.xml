@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+        <changeSet id="createPersonTable" author="init">
+            <createTable tableName="person">
+                <column name="birthdate" type="date"/>
+                <column name="per_id" type="bigint" autoIncrement="true">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="aaj" type="varchar(255)">
+                    <constraints unique="true"/>
+                </column>
+                <column name="birthplace" type="varchar(255)"/>
+                <column name="email" type="varchar(255)">
+                    <constraints unique="true"/>
+                </column>
+                <column name="mothername" type="varchar(255)"/>
+                <column name="name" type="varchar(255)"/>
+                <column name="taj" type="varchar(255)">
+                    <constraints unique="true"/>
+                </column>
+            </createTable>
+        </changeSet>
+
+        <changeSet id="createAddressTable" author="init">
+            <createTable tableName="address">
+                <column name="add_id" type="bigint" autoIncrement="true">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="fk_per_id" type="bigint">
+                    <constraints foreignKeyName="fki7btn2vcx2sb46cbjcq1xvf3l" references="person(per_id)"/>
+                </column>
+                <column name="text" type="varchar(255)">
+                </column>
+            </createTable>
+        </changeSet>
+
+
+        <changeSet id="createTelephoneTable" author="init">
+            <createTable tableName="telephone">
+                <column name="fk_per_id" type="bigint">
+                    <constraints foreignKeyName="fkhodkvu1n00olsyh47a7e9x5kq" references="person(per_id)"/>
+                </column>
+                <column name="tel_id" type="bigint" autoIncrement="true">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="number" type="varchar(255)">
+                </column>
+            </createTable>
+        </changeSet>
+
+</databaseChangeLog>
