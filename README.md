@@ -13,10 +13,15 @@ database: 5433
 You can manage person entites through the spring application by REST request.
 
 GET - /person?id=
+
 GET - /people
+
 POST - /person
+
 PUT - /person?id=
+
 DELETE - /person?id=
+
 
 Note:
 
